@@ -10,10 +10,23 @@
 <p align="center">
   <a href="COLLIDE.md"><strong>About COLLIDE</strong></a> ·
   <a href="#the-collide-framework"><strong>The Framework</strong></a> ·
-  <a href="#features"><strong>Features</strong></a> ·
+  <a href="#quick-deployment"><strong>Deploy Now</strong></a> ·
   <a href="#running-locally"><strong>Running Locally</strong></a>
 </p>
 <br/>
+
+> **⚠️ Deployment Note:** This application requires `POSTGRES_URL` and `AUTH_SECRET` environment variables to function. If you're getting 500 errors after deployment, see [QUICK_FIX.md](QUICK_FIX.md) for a 5-minute fix.
+
+## Quick Deployment
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/templates/next.js/nextjs-ai-chatbot)
+
+**After clicking "Deploy":**
+1. Set up Vercel Postgres database (Storage tab)
+2. Add `AUTH_SECRET` environment variable (generate with `openssl rand -base64 32`)
+3. Redeploy
+
+See [QUICK_FIX.md](QUICK_FIX.md) for detailed instructions.
 
 ## About COLLIDE
 

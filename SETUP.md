@@ -1,14 +1,18 @@
 # Environment Setup Guide for COLLIDE
 
-## Required Environment Variables
+## ⚠️ Critical: Required Environment Variables
 
-Create a `.env.local` file in the root directory with the following variables:
+**COLLIDE will not work without these environment variables!** The application requires a PostgreSQL database and authentication secret to function.
+
+### Minimum Required Configuration
+
+Create a `.env.local` file in the root directory with these **required** variables:
 
 ```bash
-# Database Configuration
+# ✅ REQUIRED: Database Configuration
 POSTGRES_URL="your-postgres-connection-string"
 
-# Authentication
+# ✅ REQUIRED: Authentication Secret
 AUTH_SECRET="your-secret-key-here"
 # Generate with: openssl rand -base64 32
 
@@ -98,10 +102,19 @@ Visit [http://localhost:3000](http://localhost:3000) to see COLLIDE in action.
 
 ### Vercel (Recommended)
 
+**⚠️ IMPORTANT: Set environment variables BEFORE first deployment!**
+
 1. Push your code to GitHub
 2. Import project in Vercel
-3. Add environment variables in Vercel dashboard
+3. **BEFORE deploying:** Add required environment variables in Vercel dashboard:
+   - Go to **Settings** → **Environment Variables**
+   - Add `POSTGRES_URL` (from Vercel Postgres or external provider)
+   - Add `AUTH_SECRET` (generate with `openssl rand -base64 32`)
+   - Select all environments (Production, Preview, Development)
 4. Deploy
+
+**Common Deployment Issue:**
+If you see **500 errors on `/api/auth/callback/guest`**, it means environment variables are missing. See [DEPLOYMENT_TROUBLESHOOTING.md](DEPLOYMENT_TROUBLESHOOTING.md) for the fix.
 
 Vercel automatically handles:
 - AI Gateway authentication (no API key needed)
@@ -145,6 +158,20 @@ npm run db:studio
 ```
 
 ## Troubleshooting
+
+### 🚨 Deployment Error: 500 on Authentication Routes
+
+**Symptom:** Getting 500 errors on `/api/auth/callback/guest` or `/api/auth/guest` in Vercel deployment.
+
+**Cause:** Missing `POSTGRES_URL` or `AUTH_SECRET` environment variables.
+
+**Fix:**
+1. Go to Vercel project → Settings → Environment Variables
+2. Add `POSTGRES_URL` and `AUTH_SECRET`
+3. Select all environments (Production, Preview, Development)
+4. Redeploy the application
+
+See [DEPLOYMENT_TROUBLESHOOTING.md](DEPLOYMENT_TROUBLESHOOTING.md) for detailed steps.
 
 ### Build Issues
 
