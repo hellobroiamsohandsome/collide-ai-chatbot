@@ -1,7 +1,9 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { UserSegmentSelector } from "./user-segment-selector";
-import { FrameworkPhases } from "./framework-phases";
+import { FrameworkPhases, frameworkPhases } from "./framework-phases";
 
 type GreetingMode = "initial" | "segment" | "framework";
 
@@ -14,9 +16,26 @@ export const Greeting = () => {
     setMode("framework");
   };
 
-  const handlePhaseClick = (phase: string) => {
-    // This would trigger the chat with a specific phase context
-    console.log(`Selected phase: ${phase} for ${selectedSegment} entrepreneur`);
+  const handlePhaseClick = (phaseId: string) => {
+    // Find the phase details
+    const phase = frameworkPhases.find(p => p.id === phaseId);
+    if (!phase) return;
+
+    // Store user context in sessionStorage for the chat to pick up
+    const userContext = {
+      segment: selectedSegment,
+      phase: phaseId,
+      phaseTitle: phase.title,
+      timestamp: Date.now(),
+    };
+    
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("collide_user_context", JSON.stringify(userContext));
+    }
+
+    // The actual message sending will be handled by SuggestedActions
+    // This just prepares the context
+    console.log(`Context prepared: ${phase.title} phase for ${selectedSegment} entrepreneur`);
   };
 
   return (
