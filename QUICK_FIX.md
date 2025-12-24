@@ -1,7 +1,11 @@
 # Quick Deployment Fix for Vercel
 
 ## 🔴 Current Issue
-Your deployment is failing with **500 errors** on authentication routes because required environment variables are not set.
+Your deployment is failing with authentication errors because required environment variables are not properly configured.
+
+**Latest Error:** `MissingSecret: Please define a 'secret'`
+
+This has been fixed in the code (commit f7c0904), but you still need to set the environment variables.
 
 ## ✅ Fix in 3 Steps (5 minutes)
 
@@ -25,18 +29,24 @@ Your deployment is failing with **500 errors** on authentication routes because 
 
 ### Step 2: Generate AUTH_SECRET (1 minute)
 
+**IMPORTANT:** Make sure you're adding this to **ALL environments** (Production, Preview, Development)
+
 1. Open terminal and run:
    ```bash
    openssl rand -base64 32
    ```
    
-2. Copy the output
+2. Copy the output (should be a long random string like `abc123XYZ...`)
 
 3. In Vercel: **Settings** → **Environment Variables** → **Add New**
    - Key: `AUTH_SECRET`
-   - Value: Paste the generated secret
-   - Check: Production, Preview, Development
+   - Value: Paste the generated secret (the full string, no quotes)
+   - **CRITICAL:** Check ALL THREE boxes: ✅ Production, ✅ Preview, ✅ Development
    - Click **Save**
+
+4. Verify it's saved:
+   - You should see `AUTH_SECRET` listed under Environment Variables
+   - It should show "Production, Preview, Development" under "Environments"
 
 ### Step 3: Redeploy (2 minutes)
 
@@ -86,6 +96,25 @@ If you want the AI chat to work, add ONE of these:
 Then redeploy again.
 
 ## 🆘 Still Having Issues?
+
+### Error: "MissingSecret: Please define a 'secret'"
+
+**This means AUTH_SECRET is not properly set. Common causes:**
+
+1. **Not set for all environments:**
+   - Go to Settings → Environment Variables
+   - Click on `AUTH_SECRET` to edit
+   - Make sure ALL THREE boxes are checked: Production, Preview, Development
+   - Save and redeploy
+
+2. **Value has quotes or extra spaces:**
+   - The value should be just the random string: `abc123XYZ...`
+   - NOT: `"abc123XYZ..."` (no quotes)
+   - NOT: ` abc123XYZ... ` (no leading/trailing spaces)
+
+3. **Not redeployed after adding:**
+   - Environment variables only take effect after redeployment
+   - Go to Deployments → Click ⋯ → Redeploy
 
 See detailed troubleshooting: [DEPLOYMENT_TROUBLESHOOTING.md](DEPLOYMENT_TROUBLESHOOTING.md)
 
