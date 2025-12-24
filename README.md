@@ -1,20 +1,51 @@
 <a href="https://chat.vercel.ai/">
-  <img alt="Next.js 14 and App Router-ready AI chatbot." src="app/(chat)/opengraph-image.png">
-  <h1 align="center">Chat SDK</h1>
+  <img alt="COLLIDE - Brand-Shaping House for Creative Founders" src="app/(chat)/opengraph-image.png">
+  <h1 align="center">COLLIDE - The Founder's Lens</h1>
 </a>
 
 <p align="center">
-    Chat SDK is a free, open-source template built with Next.js and the AI SDK that helps you quickly build powerful chatbot applications.
+    COLLIDE is a strategic and creative house for creative founders, powered by Next.js and the AI SDK. This implementation features "The Founder's Lens" — an AI guide through the COLLIDE Framework™.
 </p>
 
 <p align="center">
-  <a href="https://chat-sdk.dev"><strong>Read Docs</strong></a> ·
+  <a href="COLLIDE.md"><strong>About COLLIDE</strong></a> ·
+  <a href="#the-collide-framework"><strong>The Framework</strong></a> ·
   <a href="#features"><strong>Features</strong></a> ·
-  <a href="#model-providers"><strong>Model Providers</strong></a> ·
-  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
-  <a href="#running-locally"><strong>Running locally</strong></a>
+  <a href="#running-locally"><strong>Running Locally</strong></a>
 </p>
 <br/>
+
+## About COLLIDE
+
+COLLIDE is where **creative integrity meets commercial viability**. This AI-powered platform guides founders through a comprehensive 6-phase framework to transform vision into sustainable business reality.
+
+### The Founder's Lens
+
+An expert AI guide that is personal yet sharp, offering empathy for the struggle of building clarity from chaos while providing strategic insights at the intersection of aesthetics and business.
+
+### For Two Audiences
+
+1. **Aspiring Entrepreneurs** (Pre-launch/Ideation) - Focus on Discover, Frame, and Craft phases
+2. **Emerging Entrepreneurs** (Early Growth/Scaling) - Focus on Structure, Activate, and Evolve phases
+
+For complete details, see [COLLIDE.md](COLLIDE.md).
+
+## The COLLIDE Framework™
+
+Six interconnected phases guiding founders from ideation to sustainable growth:
+
+1. **DISCOVER** - Unearth vision, values & positioning
+2. **FRAME** - Define strategic narrative & market position
+3. **CRAFT** - Build brand identity & creative expression
+4. **STRUCTURE** - Establish business architecture & operations
+5. **ACTIVATE** - Launch strategies & go-to-market execution
+6. **EVOLVE** - Continuous refinement & adaptive growth
+
+---
+
+## Technical Foundation
+
+This implementation is built on the Next.js AI Chatbot template.
 
 ## Features
 
